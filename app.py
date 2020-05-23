@@ -3,13 +3,13 @@ from flask_cors import CORS
 import torch
 import random
 import numpy as np
-from pytorch_transformers import BertTokenizer, BertForMaskedLM
+from transformers import BertTokenizer, BertForMaskedLM
 import nltk
 
 app = Flask(__name__)
 CORS(app)
 
-base_dir = '/finetuned_lm-review/finetuned_lm'
+base_dir = 'finetuned_lm-review/finetuned_lm' # set to local directory
 tokenizer = BertTokenizer.from_pretrained(base_dir)
 model = BertForMaskedLM.from_pretrained(base_dir, output_attentions=False)
 model.eval()
